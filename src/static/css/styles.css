@@ -1,0 +1,222 @@
+:root {
+  --bg-color: #0d1117;
+  --text-color: #c9d1d9;
+  --accent-color: #00f0ff;
+  --secondary-accent: #bc13fe;
+  --border-color: #30363d;
+  --input-bg: #010409;
+  --font-main: "Share Tech Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+header {
+  text-align: center;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  color: var(--accent-color);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+}
+
+input,
+textarea {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 0.8rem;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  border-radius: 4px;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--secondary-accent);
+  box-shadow: 0 0 8px rgba(188, 19, 254, 0.3);
+}
+
+textarea {
+  width: 100%;
+  height: 300px;
+  resize: vertical;
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: var(--font-main);
+  flex: 1;
+  transition: all 0.3s;
+}
+
+.tab-btn.active {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.file-upload-wrapper {
+  position: relative;
+  height: 100px;
+  border: 2px dashed var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.file-upload-wrapper:hover {
+  border-color: var(--accent-color);
+}
+
+input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background: linear-gradient(
+    45deg,
+    var(--accent-color),
+    var(--secondary-accent)
+  );
+  border: none;
+  color: #fff;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+  font-family: var(--font-main);
+  clip-path: polygon(
+    10px 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    0 100%,
+    0 10px
+  );
+  transition: transform 0.1s;
+}
+
+button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+#console-output {
+  background-color: #000;
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  font-family: "Share Tech Mono", monospace;
+  margin-top: 2rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.console-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-accent);
+}
+
+.log-entry {
+  margin-bottom: 0.2rem;
+}
+
+.log-success {
+  color: #00ff00;
+}
+.log-error {
+  color: #ff0000;
+}
+.log-info {
+  color: #aaaaaa;
+}
