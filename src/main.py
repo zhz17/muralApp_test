@@ -4,12 +4,8 @@ from src.routers import api, web
 
 app = FastAPI(title="Mural Generator")
 
-# Mount static files
-app.mount("/static", StaticFiles(directory="src/static"), name="static")
-
 # Include routers
-app.include_router(web.router)
-app.include_router(api.router, prefix="/api")
+app.include_router(api.router, prefix="/auth", tags=["auth"])
 
 if __name__ == "__main__":
     import uvicorn
